@@ -1,7 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from ultralytics import YOLO
 
-model = YOLO('best (4).pt')
+model = YOLO('best(4).pt')
 app = FastAPI()
 
 @app.post("/predict/")
