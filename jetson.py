@@ -1,13 +1,21 @@
 from fastapi import FastAPI, File, UploadFile
+from ultralytics import YOLO
 
 app = FastAPI()
 
 @app.post("/predict/")
-async def object_detection(file: UploadFile = File(...)):
-    contents = await file.read()
-    
-    # Gelen dosyayı işlemek yerine, sadece mesaj döndürme örneği
-    return {"message": "Resim başarıyla alındı ve işleniyor..."}
+model = YOLO('best.pt')
+async def predict(image: bytes):
+    # Convert the image bytes to a PIL Image
+    image = Image.open(io.BytesIO(image))
+
+    # Make the prediction using YOLOv5
+    predictions = model(image)
+
+    # Convert the predictions to a byte array
+    prediction_bytes = predictions.toImage().tobytes()
+
+    return prediction_bytes
     
 if __name__ == "__main__":
     import uvicorn
