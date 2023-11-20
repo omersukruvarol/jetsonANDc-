@@ -8,3 +8,5 @@ async def object_detection(file: UploadFile = File(...)):
     
     # Gelen dosyayı işlemek yerine, sadece mesaj döndürme örneği
     return {"message": "Resim başarıyla alındı ve işleniyor..."}
+
+print("çalışıyor")
