@@ -8,5 +8,9 @@ async def object_detection(file: UploadFile = File(...)):
     
     # Gelen dosyayı işlemek yerine, sadece mesaj döndürme örneği
     return {"message": "Resim başarıyla alındı ve işleniyor..."}
+    
+if __name__ == "__main__":
+    import uvicorn
 
-print("çalışıyor")
+    # Start the FastAPI application
+    uvicorn.run(app, host="192.168.1.2", port=8000)
