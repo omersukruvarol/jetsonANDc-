@@ -2,7 +2,7 @@ from fastapi import FastAPI, File, UploadFile
 
 app = FastAPI()
 
-@app.post("/8000/")
+@app.post("/predict/")
 async def object_detection(file: UploadFile = File(...)):
     contents = await file.read()
     
