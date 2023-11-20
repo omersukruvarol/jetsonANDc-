@@ -1,11 +1,13 @@
 from fastapi import FastAPI, File, UploadFile
 from ultralytics import YOLO
 
-
+model = YOLO('best (4).pt')
 app = FastAPI()
 
 @app.post("/predict/")
-model = YOLO('best(4).pt')
+
+
+
 
 async def predict(image: bytes):
     # Convert the image bytes to a PIL Image
